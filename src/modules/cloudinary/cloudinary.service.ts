@@ -1,9 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { InjectRepository } from '@nestjs/typeorm';
 import { v2 as cloudinary } from 'cloudinary';
-import { TokenService } from 'src/common/token/token.service';
-import { Repository } from 'typeorm';
-import { Auth } from '../general/entity/auth.entity';
 import { CloudinaryResponse } from './cloudinary-response';
 const streamifier = require('streamifier');
 

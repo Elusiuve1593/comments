@@ -7,14 +7,14 @@ import {
 } from '@nestjs/common';
 import { FileInterceptor } from '@nestjs/platform-express';
 import { CloudinaryService } from './cloudinary.service';
-import { AuthGuard } from 'src/common/guards/auth.guard';
 import { multerOptions } from './multer-options';
+import { JwtAuthGuard } from '../user/jwt-auth.guard';
 
 @Controller('image')
 export class CloudinaryController {
   constructor(private readonly cloudinaryService: CloudinaryService) {}
 
-  @UseGuards(AuthGuard)
+  @UseGuards(JwtAuthGuard)
   @Post('upload')
   @UseInterceptors(FileInterceptor('file', multerOptions))
   uploadImage(
