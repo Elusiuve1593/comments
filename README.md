@@ -6,12 +6,6 @@
 
 This is a NestJS-based backend application for managing comments. It provides authentication, comment creation, and pagination features using PostgreSQL and NestJS.
 
-## Installation
-
-```bash
-$ npm install
-```
-
 ## Configuration and Running the App
 
 To get the application running, follow these steps:
