@@ -1,9 +1,9 @@
 import { HttpException, Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
-import { Comment } from './entity/Comment.entity';
+import { Comment } from './entity/comment.entity';
 import { CreateCommentDto } from './dto/comment.dto';
-import { User } from '../user/entity/User.entity';
+import { User } from '../user/entity/user.entity';
 import { plainToClass } from 'class-transformer';
 import { GetCommentsResponse } from './types/comments';
 
