@@ -33,19 +33,6 @@ To get the application running, follow these steps:
 
 Your application should now be running and ready for development.
 
-## Running the app
-
-```bash
-# development
-$ npm run start
-
-# watch mode
-$ npm run start:dev
-
-# production mode
-$ npm run start:prod
-```
-
 ## Test
 
 ```bash
