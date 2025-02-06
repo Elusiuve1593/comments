@@ -1,5 +1,5 @@
 import { Exclude } from 'class-transformer';
-import { Comment } from 'src/modules/comments/entity/comment.entity';
+import { Comment } from '../../comments/entity/comment.entity';
 import { Entity, PrimaryGeneratedColumn, Column, OneToMany } from 'typeorm';
 
 @Entity('users')
