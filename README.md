@@ -10,20 +10,20 @@ This is a NestJS-based backend application for managing comments. It provides au
 
 To get the application running, follow these steps:
 
-1. **Start the Docker container**  
-   Run the following command to start the Docker container:
-   ```bash
-   docker-compose up
-   ```
+1. **Set up environment variables**  
+   Copy the environment variables from the `env.example` file and create a new `.env` file in your project root with the necessary configuration values.
 
 2. **Install application dependencies**  
    Install all the necessary dependencies for the application:
    ```bash
-   npm i
+   npm install
    ```
 
-3. **Set up environment variables**  
-   Copy the environment variables from the `env.example` file and create a new `.env` file in your project root with the necessary configuration values.
+3. **Start the Docker container**  
+   Run the following command to start the Docker container:
+   ```bash
+   docker-compose up
+   ```
 
 4. **Run the application in development mode**  
    Start the application in development mode:
