@@ -2,19 +2,12 @@ version: '3'
 services:
   postgres:
     image: postgres:latest
-    container_name: comments_postgres
-    restart: always
-    environment:
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: password
-      POSTGRES_DB: comments_db
+    container_name: comments
     ports:
-      - "5432:5432"
+      - 5432:5432
+    environment:
+      - POSTGRES_USER=${USER}
+      - POSTGRES_DB=${DB}
+      - POSTGRES_PASSWORD=${PASSWORD}
     volumes:
-      - ./new-postgres-data:/var/lib/postgresql/data
-    networks:
-      - comments_network
-
-networks:
-  comments_network:
-    driver: bridge
+       - ./new-postgres-data:/var/lib/postgresql/new-data
