@@ -10,6 +10,7 @@ import { User } from './entity/user.entity';
 import * as bcrypt from 'bcrypt';
 import { SignUpDto } from './dto/sign-up.dto';
 import { SignInDto } from './dto/sign-in.dto';
+import { plainToClass } from 'class-transformer';
 
 @Injectable()
 export class AuthService {
@@ -22,7 +23,8 @@ export class AuthService {
     email,
     password,
     username,
-  }: SignUpDto): Promise<{ message: string }> {
+    avatar,
+  }: SignUpDto): Promise<User> {
     const existingUser = await this.userRepository.findOne({
       where: { email },
     });
@@ -33,12 +35,12 @@ export class AuthService {
     const hashedPassword = await bcrypt.hash(password, 10);
     const user = this.userRepository.create({
       username,
+      avatar,
       email,
       password: hashedPassword,
     });
     await this.userRepository.save(user);
-
-    return { message: 'User has succesfully created!' };
+    return plainToClass(User, user);
   }
 
   async signin({ email, password }: SignInDto): Promise<{ token: string }> {

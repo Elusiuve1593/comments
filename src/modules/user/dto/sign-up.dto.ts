@@ -5,6 +5,10 @@ export class SignUpDto {
   @IsNotEmpty()
   username: string;
 
+  @IsString()
+  @IsNotEmpty()
+  avatar: string;
+
   @IsEmail()
   @IsNotEmpty()
   email: string;
