@@ -29,6 +29,10 @@ export class CommentService {
       user: userEntity,
     });
     await this.commentRepository.insert(comment);
+
+    const { user: _, ...commentWithoutUser } = comment;
+
+    return commentWithoutUser;
   }
 
   async getComments(page: number, limit: number): Promise<GetCommentsResponse> {
