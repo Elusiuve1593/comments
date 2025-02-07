@@ -84,5 +84,21 @@ export class CommentService {
 
     comment.text = text;
     comment.parentId = parentId;
+
+    return plainToClass(Comment, comment);
+  }
+
+  async deleteComment(id: number) {
+    const comment = await this.commentRepository.findOne({
+      where: { id },
+      relations: ['user'],
+    });
+
+    if (!comment) {
+      throw new Error('Comment not found');
+    }
+    await this.commentRepository.delete({ id });
+
+    return { message: 'Comment deleted successfully' };
   }
 }

@@ -9,6 +9,7 @@ import {
   ParseIntPipe,
   Query,
   Put,
+  Delete,
 } from '@nestjs/common';
 import { CommentService } from './comments.service';
 import { CreateCommentDto } from './dto/comment.dto';
@@ -45,5 +46,11 @@ export class CommentController {
     @Body() body: CreateCommentDto,
   ) {
     return this.commentService.updateComment(req.user, id, body);
+  }
+
+  @UseGuards(JwtAuthGuard)
+  @Delete(':id')
+  async deleteComment(@Param('id', ParseIntPipe) id: number) {
+    return this.commentService.deleteComment(id);
   }
 }
