@@ -46,7 +46,7 @@ export class AuthService {
   async signin({ email, password }: SignInDto): Promise<{ token: string }> {
     const user = await this.userRepository.findOne({ where: { email } });
     if (!user) {
-      throw new UnauthorizedException('Invalid credentials');
+      throw new UnauthorizedException('User not found');
     }
 
     const isPasswordValid = await bcrypt.compare(password, user.password);
