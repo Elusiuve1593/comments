@@ -90,6 +90,7 @@ export class AuthService {
     const decoded: any = this.jwtService.decode(token);
     const user = await this.userRepository.findOne({
       where: { id: decoded.userId },
+      relations: ['comments'],
     });
     return plainToClass(User, user);
   }
