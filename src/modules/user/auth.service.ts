@@ -85,4 +85,12 @@ export class AuthService {
     }
     return false;
   }
+
+  async getUser(token: string): Promise<User> {
+    const decoded: any = this.jwtService.decode(token);
+    const user = await this.userRepository.findOne({
+      where: { id: decoded.userId },
+    });
+    return plainToClass(User, user);
+  }
 }
