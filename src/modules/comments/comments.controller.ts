@@ -27,9 +27,15 @@ export class CommentController {
 
   @Get()
   async getComments(
-    @Query('page') page: number = 1,
-    @Query('limit') limit: number = 25,
+    @Query('page', ParseIntPipe) page: number = 1,
+    @Query('limit', ParseIntPipe) limit: number = 25,
   ) {
+    if (page < 1) {
+      page = 1;
+    }
+    if (limit < 1) {
+      limit = 25;
+    }
     return this.commentService.getComments(page, limit);
   }
 
