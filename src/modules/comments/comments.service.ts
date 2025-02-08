@@ -88,7 +88,7 @@ export class CommentService {
     return plainToClass(Comment, comment);
   }
 
-  async deleteComment(id: number) {
+  async deleteComment(user: User, id: number) {
     const comment = await this.commentRepository.findOne({
       where: { id },
       relations: ['user'],
@@ -97,6 +97,11 @@ export class CommentService {
     if (!comment) {
       throw new Error('Comment not found');
     }
+
+    if (comment.user.id !== user.id) {
+      throw new HttpException('You are not allowed to edit this comment', 500);
+    }
+
     await this.commentRepository.delete({ id });
 
     return { message: 'Comment deleted successfully' };
