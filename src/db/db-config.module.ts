@@ -17,6 +17,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
         database: configService.get<string>('DB'),
         synchronize: true,
         autoLoadEntities: true,
+        timezone: 'Europe/Kiev'
       }),
       inject: [ConfigService],
     }),

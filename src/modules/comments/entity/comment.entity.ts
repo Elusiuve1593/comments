@@ -18,7 +18,7 @@ export class Comment {
   @Column({ nullable: true })
   parentId: number;
 
-  @CreateDateColumn()
+  @CreateDateColumn({ type: 'timestamptz' })
   createdAt: Date;
 
   @ManyToOne(() => User, (user) => user.comments)
