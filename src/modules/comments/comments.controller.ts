@@ -30,10 +30,10 @@ export class CommentController {
     @Query('page', ParseIntPipe) page: number = 1,
     @Query('limit', ParseIntPipe) limit: number = 25,
   ) {
-    if (page < 1) {
+    if (page <= 0) {
       page = 1;
     }
-    if (limit < 1) {
+    if (limit <= 0) {
       limit = 25;
     }
     return this.commentService.getComments(page, limit);

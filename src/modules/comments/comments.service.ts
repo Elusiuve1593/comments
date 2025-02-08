@@ -36,6 +36,14 @@ export class CommentService {
   }
 
   async getComments(page: number, limit: number): Promise<GetCommentsResponse> {
+    if (page <= 0) {
+      page = 1; 
+    }
+
+    if (limit <= 0) {
+      limit = 5;
+    }
+  
     const [comments, total] = await this.commentRepository.findAndCount({
       order: { createdAt: 'DESC' },
       take: limit,
