@@ -85,6 +85,8 @@ export class CommentService {
     comment.text = text;
     comment.parentId = parentId;
 
+    await this.commentRepository.save(comment);
+
     return plainToClass(Comment, comment);
   }
 
